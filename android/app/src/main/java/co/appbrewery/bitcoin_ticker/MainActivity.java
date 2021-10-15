@@ -15,3 +15,4 @@ System.out.println("4th Random Number: " + Math.random());
     GeneratedPluginRegistrant.registerWith(this);
   }
 }
+/*%nothing%/*
