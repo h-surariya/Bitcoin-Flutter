@@ -3,6 +3,8 @@
 
 # Bitcoin Ticker 🤑
 fjdklfjeowjfipoewjdvikfnsdiejfiwep;sjdfiqa
+fdjfnweljksnflcksnmfdlkcesdlkfmklednaflk
+fvnksdjnfvklsedmfsdmf,sdfsdf
 
 ## Our Goal
 
