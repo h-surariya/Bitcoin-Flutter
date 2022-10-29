@@ -20,3 +20,17 @@ public:
         return helper(st, vis, 0, 1, stones[stones.size()-1]);  
     }
 };
+
+// buy sell stock
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int l = INT_MAX; 
+        int ans =0; 
+        for(int i = 0; i< prices.size(); i++){
+            ans = max(ans, prices[i]-l); 
+            l = min(l, prices[i]); 
+        }
+        return ans; 
+    }
+};
