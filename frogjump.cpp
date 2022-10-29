@@ -54,3 +54,38 @@ public:
         return ans; 
     }
 };
+
+//  buy sell stock 3
+class Solution {
+public:
+    int helper(int n, int buy, int k, vector<int> &prices, vector<vector<vector<int>>>& dp){
+        if(n==prices.size())return 0; 
+        if(k==0)return 0; 
+        if(dp[n][k][buy]!=-1)return dp[n][k][buy]; 
+        if(buy){
+            return dp[n][k][buy] = max(-prices[n]+helper(n+1, 0, k, prices, dp), helper(n+1, 1, k, prices, dp)); 
+        }
+        else{
+            return dp[n][k][buy] = max(prices[n]+helper(n+1, 1, k-1, prices, dp), helper(n+1, 0, k, prices, dp)); 
+        }
+    }
+    int maxProfit(vector<int>& prices) {
+        int m = prices.size(); 
+        vector<vector<int>> next(3, vector<int>(2, 0)); 
+        vector<vector<int>> curr(3, vector<int>(2, 0)); 
+        for(int i = m-1; i>=0; i--){
+            for(int k = 2; k>=1; k--){
+                for(int buy = 0; buy<2; buy++){
+                    if(buy){
+                       curr[k][buy] = max(-prices[i]+next[k][0], next[k][1]) ; 
+                    }
+                    else{
+                        curr[k][buy] = max(prices[i]+next[k-1][1], next[k][0]); 
+                    }
+                }
+            }
+            next = curr; 
+        }
+        return next[2][1];
+    }
+};
