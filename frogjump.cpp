@@ -89,3 +89,53 @@ public:
         return next[2][1];
     }
 };
+
+// longest palindromic subsequence
+    bool helper(string ans){
+        int i = 0; 
+        int j = ans.size()-1; 
+        while(i<j){
+            if(ans[i]!=ans[j])return false; 
+            i++; j--; 
+        }
+        return true; 
+    }
+    string longestPalindrome(string s) {
+        string t = s; 
+        reverse(t.begin(), t.end()); 
+        cout<<s<<endl; 
+        cout<<t<<endl; 
+        int n = s.size(); 
+        vector<vector<int>> dp(n+1, vector<int>(n+1)); 
+        for(int i = 0; i<= n;i++){
+            for(int j = 0; j<= n; j++){
+                if(i==0||j==0){
+                    dp[i][j] = 0; 
+                }
+                else if(s[i-1]==t[j-1])dp[i][j] = dp[i-1][j-1]+1; 
+                else dp[i][j] = max(dp[i][j-1], dp[i-1][j]); 
+ 
+            }
+           
+        }
+        
+        string ans; 
+        string ans2; 
+        int i = n, j = n; 
+        while(i>0&&j>0){
+            if(dp[i][j]==0)break; 
+            if(dp[i-1][j-1]+1==dp[i][j]){
+                ans.push_back(s[j-1]);
+                ans2.push_back(t[j-1]); 
+                i--; j--; 
+            }
+            else if(dp[i-1][j]>dp[i][j-1]){
+                i--; 
+            }
+            else{
+                j--; 
+            }
+        }
+        if(helper(ans))return ans; 
+        return ans2; 
+    }
