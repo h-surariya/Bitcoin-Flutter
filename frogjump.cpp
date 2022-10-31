@@ -139,3 +139,19 @@ public:
         if(helper(ans))return ans; 
         return ans2; 
     }
+// Reverse Integer
+    int reverse(int a) {
+        long long  ans = 0;
+        long long x =  a; 
+        bool y = true; 
+        if(x<0) y = false, x = -1*x; 
+        while (x) {
+            long long temp = ans * 10 + x % 10;
+            if(temp>INT_MAX)return 0; 
+            ans = temp;
+            x /= 10;
+        }
+        if(y)
+        return ans;
+        else return -1*ans; 
+    }
