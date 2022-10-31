@@ -155,3 +155,24 @@ public:
         return ans;
         else return -1*ans; 
     }
+// Zig zag converter
+    string convert(string s, int numRows) {
+        vector<string> v(numRows); 
+        int k = 0;
+        int j = 0;
+        if(numRows==1)return s; 
+        bool flag = true; 
+        while(k<s.size()){
+            if(j==0)flag = true;
+            if(j==numRows-1) flag = false; 
+            v[j].push_back(s[k]); 
+            if(flag)j++; 
+            else j--; 
+            k++;
+        }
+        string ans; 
+        for(auto i: v){
+            ans+= i; 
+        }
+        return ans; 
+    }
