@@ -176,3 +176,18 @@ public:
         }
         return ans; 
     }
+// 
+container with most water
+    int maxArea(vector<int>& height) {
+        int i = 0, j = height.size()-1; 
+        int ans = 0; 
+        while(i< j){
+            int temp = (min(height[i], height[j])*(j-i)); 
+            ans = max(ans, temp); 
+            if(height[i]>=height[j]){
+                j--; 
+            }
+            else i++; 
+        }
+        return ans; 
+    }
